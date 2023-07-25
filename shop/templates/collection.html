@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{%block title%}Collection{%endblock title%}
+<!-- {% block style %}
+.form-control {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    border-radius: 0;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    background-color: #ffffff;
+    -webkit-transition: all 0.1s ease-in;
+    -moz-transition: all 0.1s ease-in;
+    -ms-transition: all 0.1s ease-in;
+    -o-transition: all 0.1s ease-in;
+    transition: all 0.1s ease-in;
+}{% endblock style %} -->
+{% block body %}
+
+    <!-- Banner -->
+    <div class="main">
+
+        <div class="container-fluid ">
+            <div class="row">
+                <img class="p-0" src="../static/banner-img.jpg" alt="Banner image">
+            </div>
+        </div>
+    </div>
+    <!-- Banner end -->
+
+    <!-- Main collection -->
+    <div class="container">
+
+        <div class="title text-center mt-4 p-4">
+            <h2 class="position-relative d-inline-block">Collection</h2>
+            <div class="col-sm-3 m-auto">
+                <select class="form-control input-lg" name="category" onchange="location = this.value;">
+                  <option value="/collection">All Categories</option>
+                  <optgroup label="Womens">
+                    <option value="/kurti" >kurti</option>
+                    <option value="t-shirts">T-shirts</option>
+                    <option value="skirts">Shirt</option>
+                    <option value="jeans">Jeans</option>
+                    <option value="pullover">Jacket</option>
+                  </optgroup>
+                  
+                </select>
+              </div>
+        </div>
+
+        <p>{{products_count}} items found</p>
+        <div class="row row-cols-1 row-cols-md-2 mt-3 g-4">
+
+            {% for product in products %}
+            <div class="col-xl-3 ">
+                <div class="card">
+                    <a href="#"><img src="{{product.image.url}}" class="card-img-top p-2" alt="..."></a>
+                    <div class="card-body">
+                        <span class="card-text">D & G</span>
+                        <h4 class="card-title">Blue-top</h4>
+                        <span class="fw-bold">Rs. {{product.price}}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% comment %} {% for product in products %}
+            <div class="col-xl-3">
+                <div class="card">
+                    <img src="{{product.image.url}}" class="card-img-top " alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <span class="fw-bold">$ 45.50</span>
+                    </div>
+                </div>
+            </div> 
+            {% endfor %} {% endcomment %}
+
+        </div>
+    </div>
+    <!-- Main collection end -->
+
+    <!-- Pagination -->
+    <nav aria-label="..." class="py-2 mt-5">
+        <ul class="pagination pagination-lg justify-content-center">
+            <li class="page-item active px-1" aria-current="page">
+                <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item px-1"><a class="page-link" href="#">2</a></li>
+            <li class="page-item px-1"><a class="page-link" href="#">→</a></li>
+        </ul>
+    </nav>
+    <!-- Pagination end -->
+
+    {% endblock body %}
